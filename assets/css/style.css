@@ -157,3 +157,40 @@ body {
         margin-top: 20px; 
     }
 
+    /*Style za FAQ*/
+#FFaq-naslov {
+    background-color: #388e3c; /* Tamno zelena boja za pitanje */
+}
+#faq-container {
+    border: 2px solid #28a745; /* Tamno zelena border oko FAQ kontejnera */
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #e9f7e7; /* Svetlo zelena pozadina za FAQ sekciju */
+}
+
+.faq-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+    .faq-item:hover {
+        border-color: #388e3c; 
+        background-color: #f1f8f6; 
+    }
+
+.faq-question {
+    font-size: 16px;
+    font-weight: bold;
+    color: #388e3c; /* Tamno zelena boja za pitanje */
+    cursor: pointer; /* Cursor kao ruka na klikabilnom pitanju */
+}
+
+.faq-answer {
+    border-top: 4px solid #c8e6c9; /* Svetlo zelena border između odgovora i pitanja */
+    padding-left: 25px;
+    padding-top: 20px;
+    font-size: 15px;
+    display: none; /* Po defaultu odgovor je skriven */
+}

@@ -85,8 +85,8 @@ let Slike = [
 ];
 
 let text = [
-    "Dobrodosli na sajt udruzenja Vesela sapica!",
-    "I mi zelimo dom, udomi ne kupuj.",
+    "Dobrodosli na sajt udruzenja Vesela Šapica!",
+    "I mi zelimo dom, udomi ne kupuj!",
     "Pogledajte najnovija obavestenja!"
 ];
 
@@ -162,6 +162,7 @@ p.textContent = opis;
 
 textOnama.appendChild(p);
 
+//Grafik
 let godina = ['2019', '2020', '2021', '2022', '2023'];
 let brojZivotinja = [100, 125, 150, 300, 350];
 
@@ -174,8 +175,8 @@ let animalChart = new Chart(ctx, {
         datasets: [{
             label: 'Broj napuštenih životinja',
             data: [100, 125, 150, 300, 350],
-            borderColor: 'rgba(255, 99, 132, 1)',
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            backgroundColor: 'rgba(76, 175, 80, 0.75)',
+            borderColor: 'rgba(56, 142, 60, 1)',
             fill: true,
             tension: 0.1
         }]
@@ -188,8 +189,54 @@ let animalChart = new Chart(ctx, {
             }
         },
         animation: {
-            duration: 3000,  // Trajanje animacije u milisekundama (ovde je 3 sekunde)
-            easing: 'easeInOutQuad'  // Funkcija ublažavanja za glatke promene
+            duration: 3000,
+            easing: 'easeInOutQuad'
         }
     }
 });
+//FAQ
+
+let questions = ["Kako mogu postati volonter?",
+    "Kako mogu donirati?",
+    "Gde mogu udomiti životinju?"];
+
+let answers = ["Da biste postali volonter, možete popuniti naš online formular ili nas kontaktirati putem telefona.",
+    "Donacije možete izvršiti putem naše stranice za donacije ili nas kontaktirati za dodatne informacije.",
+    "Pogledajte našu sekciju 'Udomi' za životinje koje su trenutno dostupne za udomljavanje."];
+
+document.addEventListener("DOMContentLoaded", function () {
+    let faqContainer = document.getElementById("faq-container");
+
+    for (let i = 0; i < questions.length; i++) {
+        // Kreiraj div za svaki FAQ item
+        let faqItem = document.createElement("div");
+        faqItem.classList.add("faq-item");
+        //Pitanje
+        let questionElement = document.createElement("h5");
+        questionElement.classList.add("faq-question");
+        questionElement.textContent = questions[i];
+        //Odgovor
+        let answerElement = document.createElement("p");
+        answerElement.classList.add("faq-answer");
+        answerElement.textContent = answers[i];
+        answerElement.style.display = "none";
+
+        //Dodavanje u FAQ
+        faqItem.appendChild(questionElement);
+        faqItem.appendChild(answerElement);
+
+        //Dodavanje u glavni kontejner
+        faqContainer.appendChild(faqItem);
+    }
+
+    // Dodaj funkcionalnost za otvaranje/zatvaranje odgovora na klik
+    let questionsElements = document.querySelectorAll(".faq-question");
+    questionsElements.forEach(function (question) {
+        question.addEventListener("click", function () {
+            let answer = question.nextElementSibling;
+            // Toggle prikaza odgovora
+            $(answer).slideToggle("fast");
+        });
+    });
+});
+
