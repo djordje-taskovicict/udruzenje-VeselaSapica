@@ -12,6 +12,8 @@
     <meta charset="utf-8" />
     <title>Udruzenje Vesela sapica</title>
     <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- Js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/script/functions.js" defer></script>
 </head>
 <body>
@@ -36,6 +38,7 @@
         </div>
     </nav>
 
+    <!-- Slajder -->
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="carouselItems">
             <!-- Dynamically added items will go here -->
@@ -49,6 +52,40 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+   
+    <!-- O udruzenju -->
+    <section class="container my-5" id="O-udruzenju">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="img/O udruzenju.jpeg" class="img-fluid rounded-4" alt="Udruzenje" />
+                </div>
+
+                <div id="textOnama" class="col-md-6">
+                    <h2>O udruzenju Vesela Šapica</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Grafik i donacije-->
+    <section class="container my-5" id="animal-chart-section">
+        <div class="row">
+            <!-- Kolona za Donacije -->
+            <div class="col-md-6">
+                <h2>Podrška udruženju</h2>
+                <p>Pomozite nam da obezbedimo bolji život za napuštene životinje. Vaše donacije nam pomažu da pružimo pomoć životinjama u potrebi.</p>
+                <button class="btn btn-primary">Donirajte sada</button>
+            </div>
+
+
+            <!-- Kolona za grafikon -->
+            <div class="col-md-6">
+                <h2>Broj napuštenih životinja (Grafikon)</h2>
+                <canvas id="animalChart"></canvas>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-light py-4">

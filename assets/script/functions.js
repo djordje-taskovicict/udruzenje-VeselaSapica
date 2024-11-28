@@ -150,3 +150,46 @@ for (let i = 0; i < Slike.length; i++) {
     // Dodavanje novog itema u carousel
     carouselInner.appendChild(div);
 }
+
+let opis = "Vesela Šapa je udruženje posvećeno zbrinjavanju napuštenih";
+    opis+= "životinja i njihovom udomljavanju.Naša misija je stvaranje sigurnih";
+    opis += "domova za sve pse i mačke i edukacija zajednice o važnosti odgovornog vlasništva.";
+    opis+="Pružimo svakoj šapi priliku za srećan život!";
+
+let textOnama = document.getElementById("textOnama");
+let p = document.createElement("p");
+p.textContent = opis;
+
+textOnama.appendChild(p);
+
+let godina = ['2019', '2020', '2021', '2022', '2023'];
+let brojZivotinja = [100, 125, 150, 300, 350];
+
+let ctx = document.getElementById('animalChart').getContext('2d');
+
+let animalChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['2019', '2020', '2021', '2022', '2023'],
+        datasets: [{
+            label: 'Broj napuštenih životinja',
+            data: [100, 125, 150, 300, 350],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            fill: true,
+            tension: 0.1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        animation: {
+            duration: 3000,  // Trajanje animacije u milisekundama (ovde je 3 sekunde)
+            easing: 'easeInOutQuad'  // Funkcija ublažavanja za glatke promene
+        }
+    }
+});

@@ -148,3 +148,12 @@ body {
             padding: 8px 15px;
         }
 }
+
+#animal-chart-section {
+    padding: 65px 0; 
+}
+
+    #animal-chart-section .row {
+        margin-top: 20px; 
+    }
+
