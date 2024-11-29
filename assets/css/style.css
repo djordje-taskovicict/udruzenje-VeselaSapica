@@ -32,6 +32,7 @@ body {
         text-decoration: none;
     }
 
+
 /* Footer */
 #footerLinks li {
     margin-bottom: 10px;
@@ -100,18 +101,18 @@ body {
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 10px;
     text-align: center;
     z-index: 2;
 }
 
     .carousel-caption h5 {
-        font-size: 1.5rem;
+        font-size: 2.25rem;
     }
 
     .carousel-caption p {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
 
     .carousel-caption .btn {
@@ -119,7 +120,7 @@ body {
     }
 
 /* Mali ekrani */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     #myCarousel {
         height: 300px;
         min-height: 300px;
@@ -132,7 +133,7 @@ body {
     .carousel-caption {
         bottom: 10%;
         padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.3);
         z-index: 20;
     }
 
@@ -156,8 +157,14 @@ body {
     #animal-chart-section .row {
         margin-top: 20px; 
     }
+/*Style Udruzenje*/
+#O-udruzenju {
+    background-color: #e9f7e7; /* Svetlo zelena pozadina za FAQ sekciju */
+    border: 2px solid #28a745; /* Tamno zelena border oko FAQ kontejnera */
+    border-radius: 30px;
+}
 
-    /*Style za FAQ*/
+/*Style za FAQ*/
 #FFaq-naslov {
     background-color: #388e3c; /* Tamno zelena boja za pitanje */
 }
@@ -193,4 +200,32 @@ body {
     padding-top: 20px;
     font-size: 15px;
     display: none; /* Po defaultu odgovor je skriven */
+}
+/*Udruzenje*/
+#O-nama {
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    border-radius: 30px;
+    padding-top:20px;
+    padding-left:20px;
+}
+.slike{
+    height:30px;
+}
+#Spasene-zivotinje {
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    border-radius: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+/*Autor*/
+#Autor {
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    border-radius: 30px;
+}
+.subsection {
+    border-bottom: 3px solid #28a745;
+    border-top: 3px solid #28a745;
 }
