@@ -1,7 +1,7 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     //Nav
-    let navItems = ["Pocetna", "Udruzenje", "Udomi", "Obavestenja", "Autor"];
-    let navLinks = ["index.html", "o-nama.html", "udomi.html", "obavestenja.html", "autor.html"];
+    let navItems = ["Pocetna", "Udruzenje", "Udomi", "Autor"];
+    let navLinks = ["index.html", "o-nama.html", "udomi.html", "autor.html"];
 
     let navMenu = document.getElementById("navMenu");
 
@@ -19,20 +19,11 @@
         navMenu.appendChild(li);
     }
 });
-document.addEventListener("DOMContentLoaded", function () {
-    const toggler = document.querySelector(".navbar-toggler");
-    if (toggler) {
-        toggler.addEventListener("click", function () {
-            console.log("Hamburger meni kliknut!");
-        });
-    }
-});
-
 
 
 //Footer
-let footerItems = ["Pocetna", "Udruzenje", "Udomi", "Obavestenja"];
-let footerLinkovi = ["index.html", "o-nama.html", "udomi.html", "obavestenja.html"];
+let footerItems = ["Pocetna", "Udruzenje", "Udomi","Autor"];
+let footerLinkovi = ["index.html", "o-nama.html", "udomi.html","autor.html"];
 
 let footerLink = document.getElementById("footerLinks");
 
@@ -46,6 +37,20 @@ for (let i = 0; i < footerItems.length; i++) {
 
     li.appendChild(a);
     footerLinks.appendChild(li);
+}
+
+let Onama = ["Vesela Šapica je udruženje posvećeno zaštiti napuštenih životinja, sigurnost i priliku za novi dom."];
+
+let footerOnama = document.getElementById("footeronama");
+
+for (let i = 0; i < Onama.length; i++) {
+    let p = document.createElement("p");
+    p.textContent = Onama[i]; 
+    if (footerOnama.children.length >= 1) {
+        footerOnama.insertBefore(p, footerOnama.children[1]); // Ubacivanje pre drugog elementa
+    } else {
+        footerOnama.appendChild(p); // Ako nema dovoljno elemenata, dodaj na kraj
+    }
 }
 // footer contacts
 let contactLabels = ["Email", "Telefon", "Adresa"];

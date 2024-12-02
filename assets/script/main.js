@@ -4,32 +4,27 @@
 // Nizovi sa podacima (slikama, tekstovima i dugmetima)
 let Slike = [
     "img/Vesela_Sapica.jpg",
-    "img/Pas_u_kavezu.jpg",
-    "img/blog.jpg"
+    "img/Pas_u_kavezu.jpg"
 ];
 
 let text = [
     "Dobrodosli na sajt udruzenja Vesela Šapica!",
-    "I mi zelimo dom, udomi ne kupuj!",
-    "Pogledajte najnovija obavestenja!"
+    "I mi zelimo dom, udomi ne kupuj!"
 ];
 
 let dugmetxt = [
     "Saznaj vise",
     "Zakazi upoznavanje sa psom/mackom",
-    "Blog"
 ];
 
 let dugmad = [
-    "#learn-more",
-    "#discover-more",
-    "#join-us"
+    "o-nama.html",
+    "Udomi.html"
 ];
 
 let Opisi = [
     "Klikom na dugme ispod mozete saznati vise o nasem udruzenju.",
-    "Mozete pogledati pse/macke koje su trenutno kod nas, a mozete i zakazati upoznavanje sa psom/mackom koji su Vam se svideli.",
-    "Pogledajte nas blog gde kacimo zanimljive cinjenice o psima/mackama kao i obavestenja ko od nasih pasa/macaka je nasao svoj Zauvek dom."
+    "Mozete pogledati pse/macke koje su trenutno kod nas, a mozete i zakazati upoznavanje sa psom/mackom koji su Vam se svideli."
 ];
 
 let carouselInner = document.getElementById("carouselItems");
@@ -119,6 +114,13 @@ let animalChart = new Chart(ctx, {
     }
 });
 
+let tekstDiv = document.querySelector('.tekst');
+
+const tekst = document.createElement('p');
+
+tekst.textContent = 'Vesela Šapica posvećena je pomoći napuštenim životinjama, pružajući im siguran dom i ljubav. Vaša podrška omogućava naš rad i pomaže da stvorimo bolje uslove za pse i mačke koje su u potrazi za novim domovima. Kroz naše akcije, ne samo da pružamo utočište za napuštene životinje, već i edukujemo zajednicu o odgovornom vlasništvu i važnosti brige za ljubimce.';
+
+tekstDiv.appendChild(tekst);
 
 //FAQ
 let questions = ["Kako mogu postati volonter?",
