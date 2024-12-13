@@ -229,3 +229,61 @@ body {
     border-bottom: 3px solid #28a745;
     border-top: 3px solid #28a745;
 }
+
+/* Osnovni stilovi za main i footer */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.main-content {
+    min-height: 80vh; /* Osigurava da main zauzima minimalnu visinu 80% ekrana */
+    padding-bottom: 20px; /* Prostor između sadržaja i footera */
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+    footer .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+/* Opcionalno: Stil za gallery-container */
+.gallery-container {
+    padding: 20px;
+}
+
+
+/*Galerija*/
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .card:hover {
+        transform: scale(1.2);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+.card-img-top {
+    transition: filter 0.3s;
+}
+
+    .card-img-top:hover {
+        filter: brightness(80%);
+    }
+
+/* Klasa za slike u galeriji */
+.gallery-img {
+    width: auto;
+    height: 350px;
+    object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
+}
+
