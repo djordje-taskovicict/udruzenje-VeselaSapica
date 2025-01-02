@@ -288,3 +288,95 @@ footer {
     object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
 }
 
+
+/* Stilizacija za formu */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Stilizacija za labelu */
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+/* Dodavanje stila za inpute (tekst, email, itd.) */
+input, select, .radio-group, .checkbox-group {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+    /* Razlikovanje greške i uspeha */
+    input.error, select.error {
+        border-color: red;
+    }
+
+    input.success, select.success {
+        border-color: green;
+    }
+
+/* Poravnavanje radio button-a i checkbox-a u liniji sa labelama */
+.radio-group, .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Razmak između radio buttona, checkbox-a i labela */
+    margin-top: 5px;
+}
+
+    /* Poravnavanje radio button-a i checkbox-a sa svojim labelama */
+    .radio-group input[type="radio"], .checkbox-group input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+/* Dodavanje greške ispod svakog inputa */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+    margin-top: 5px;
+}
+
+    .error-message.active {
+        display: block;
+    }
+
+/* Stilizacija dugmeta */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+/* Ispod svakog inputa, kada je u grešci ili uspehu */
+input.error, input.success, select.error, select.success {
+    margin-bottom: 5px;
+}
+
+.radio-checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+    .radio-checkbox-group input,
+    .radio-checkbox-group label {
+        margin-right: 10px; /* Razmak između radio dugmadi/checkbox i labela */
+    }
+
