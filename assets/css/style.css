@@ -7,10 +7,9 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    background-color: #333;
-    padding: 10px;
-    color: white;
+    align-items: center; /* Vertikalno poravnanje logoa i togglera */
+    justify-content: space-between; /* Rasporedi logo i toggler na krajeve */
+    padding: 0.5rem 1rem; /* Prilagodi padding navigacije */
 }
 
 #logo {
@@ -34,6 +33,21 @@ body {
 
 
 /* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+    footer .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+
 #footerLinks li {
     margin-bottom: 10px;
     list-style: none !important;
@@ -121,6 +135,15 @@ body {
 
 /* Mali ekrani */
 @media only screen and (max-width: 768px) {
+    .navbar-brand {
+        margin-right: auto; /* Osiguraj da logo ostane levo */
+    }
+
+    .navbar-toggler {
+        margin-left: auto; /* Osiguraj da toggler ostane desno */
+        order: 2; /* Ako je potrebno, stavi toggler na drugi redosled */
+    }
+    
     #myCarousel {
         height: 300px;
         min-height: 300px;
@@ -231,34 +254,19 @@ body {
     border-top: 3px solid #28a745;
 }
 
-/* Osnovni stilovi za main i footer */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
 .main-content {
     min-height: 80vh; /* Osigurava da main zauzima minimalnu visinu 80% ekrana */
     padding-bottom: 20px; /* Prostor između sadržaja i footera */
 }
 
-footer {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-    footer .container {
-        display: flex;
-        justify-content: space-between;
-    }
-
 /* Opcionalno: Stil za gallery-container */
 .gallery-container {
-    padding: 20px;
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    border-radius: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right:20px;
 }
 
 
@@ -266,29 +274,38 @@ footer {
 
 .card {
     transition: transform 0.3s, box-shadow 0.3s;
+    border-radius:10px;
+    padding: 0.4rem;
 }
 
     .card:hover {
-        transform: scale(1.2);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: scale(1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
 
 .card-img-top {
-    transition: filter 0.3s;
+    transition: filter 0.2s;
 }
 
     .card-img-top:hover {
-        filter: brightness(80%);
+        filter: brightness(90%);
     }
 
 /* Klasa za slike u galeriji */
 .gallery-img {
     width: auto;
-    height: 350px;
+    height: 300px;
     object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
 }
 
-
+/*Stilizacija za info container*/
+#form-container {
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding:1.5rem;
+}
 /* Stilizacija za formu */
 .form-group {
     margin-bottom: 15px;
@@ -349,7 +366,7 @@ input, select, .radio-group, .checkbox-group {
     }
 
 /* Stilizacija dugmeta */
-button {
+.button-forma {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -361,9 +378,6 @@ button {
     margin-top: 15px;
 }
 
-    button:hover {
-        background-color: #45a049;
-    }
 
 /* Ispod svakog inputa, kada je u grešci ili uspehu */
 input.error, input.success, select.error, select.success {
@@ -379,4 +393,32 @@ input.error, input.success, select.error, select.success {
     .radio-checkbox-group label {
         margin-right: 10px; /* Razmak između radio dugmadi/checkbox i labela */
     }
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
 

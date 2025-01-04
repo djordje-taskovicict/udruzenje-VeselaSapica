@@ -62,29 +62,47 @@ function createGallery(data) {
 
 // Pozivanje funkcije sa podacima
 galleryData.length && createGallery(galleryData);
-const formContainer = document.getElementById('form-container');
-const form = document.createElement('form');
+
+
+const dynamicText = `
+  <p>Ako želite da upoznate određenog psa, molimo vas da popunite formu sa svojim osnovnim podacima, kao što su ime, prezime, email i željeni datum i vreme. Nakon toga, od vas će biti zatraženo da izaberete ljubimca kojeg biste želeli da upoznate, kao i tip ljubimca (pas ili mačka).</p>
+  
+  <p>Ako niste sigurni kojeg ljubimca želite da upoznate, slobodno popunite formu i odaberite tip ljubimca, a mi ćemo vam pomoći da pronađete odgovarajućeg psa ili mačku. Popunjavanjem ove forme, omogućujete nam da vas obavestimo o dostupnosti ljubimaca i zakažemo termin za upoznavanje.</p>
+  
+  <p>Vaši podaci će biti zaštićeni, a nakon uspešnog slanja forme, bićete obavešteni o daljim koracima.</p>
+`;
+
+document.getElementById('info-container').innerHTML = dynamicText;
+
+
 
 const fields = [
     {
         label: 'Vaše ime:',
         id: 'name',
         type: 'text',
-        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',  // Ispravka za regex
+        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',
         errorMessage: 'Ime sme sadržati samo slova i razmake.'
     },
     {
         label: 'Vaše prezime:',
         id: 'surname',
         type: 'text',
-        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',  // Ispravka za regex
+        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',
         errorMessage: 'Prezime sme sadržati samo slova i razmake.'
     },
     {
         label: 'Vaša email adresa:',
         id: 'email',
         type: 'email',
-        errorMessage: 'Unesite validnu email adresu (primer: korisnik@email.com).'  // Uklonjen pattern
+        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',
+        errorMessage: 'Unesite validnu email adresu (primer: korisnik@email.com).'
+    },
+    {
+        label: 'Zakazite dan i vreme kada biste došli da upoznate potencijalnog ljubimca:',
+        id: 'appointment-date',
+        type: 'datetime-local',
+        errorMessage: 'Morate odabrati validan datum i vreme.'
     },
     {
         label: 'Koga želite da upoznate:',
@@ -98,19 +116,19 @@ const fields = [
         id: 'pet-name',
         type: 'dropdown',
         options: [],
-        errorMessage: 'Da bi odabrali ljubimca kojeg zelite upoznati morate da odaberete da li zelite psa ili Macku.'
+        errorMessage: 'Da bi odabrali ljubimca kojeg želite upoznati morate da odaberete da li želite psa ili mačku.'
     },
     {
-        label: 'Slažem se sa uslovima korišćenja i politikom privatnosti:',
+        type: 'checkbox',
         id: 'terms',
-        type: 'checkbox',
-        errorMessage: 'Morate prihvatiti uslove korišćenja i politiku privatnosti.'
+        label: 'I agree to the terms and conditions',
+        errorMessage: 'You must agree to the terms'
     },
     {
-        label: 'Slažem se sa politikom privatnosti:',
-        id: 'privacy-policy',
         type: 'checkbox',
-        errorMessage: 'Morate prihvatiti politiku privatnosti.'  // Dodan novi checkbox za Privacy Policy
+        id: 'privacy',
+        label: 'I agree to the privacy policy',
+        errorMessage: 'You must agree to the privacy policy'
     }
 ];
 
@@ -118,6 +136,102 @@ const petNames = {
     Pas: ['', 'Mini', 'Betty', 'Izy', 'Ljubisa/Bubi', 'Maza', 'Aki', 'Pera', 'Vuki', 'Astor'],
     Mačka: ['', 'Mica', 'Mika', 'Garfild', 'Živojin', 'Vukica', 'Malisa', 'Ava']
 };
+
+const createInputField = (field) => {
+    const input = document.createElement('input');
+    input.type = field.type;
+    input.id = field.id;
+    input.name = field.id;
+    if (field.pattern) input.pattern = field.pattern;
+    if (field.id === 'appointment-date') {
+        input.min = new Date().toISOString().slice(0, 16); // Disable past dates
+    }
+    return input;
+};
+
+const createDropdown = (field) => {
+    const select = document.createElement('select');
+    select.id = field.id;
+    select.name = field.id;
+    return select;
+};
+
+const createRadioButtons = (field) => {
+    const radioGroup = document.createElement('div');
+    radioGroup.classList.add('radio-checkbox-group');
+
+    field.options.forEach(option => {
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.id = `${field.id}-${option}`;  // Ispravka
+        input.name = field.id;
+        input.value = option;
+
+        input.addEventListener('change', () => {
+            const petNameDropdown = document.getElementById('pet-name');
+            petNameDropdown.innerHTML = '';
+            petNames[option].forEach(petName => {
+                const optionElement = document.createElement('option');
+                optionElement.value = petName;
+                optionElement.textContent = petName;
+                petNameDropdown.appendChild(optionElement);
+            });
+        });
+
+        const radioLabel = document.createElement('label');
+        radioLabel.htmlFor = `${field.id}-${option}`;  // Ispravka
+        radioLabel.textContent = option;
+
+        radioGroup.appendChild(input);
+        radioGroup.appendChild(radioLabel);
+    });
+
+    return radioGroup;
+};
+
+const setErrorState = (input, errorMessageElement, hasError) => {
+    if (hasError) {
+        input.classList.add('error');
+        input.classList.remove('success');
+        errorMessageElement?.classList.add('active');
+    } else {
+        input.classList.remove('error');
+        input.classList.add('success');
+        errorMessageElement?.classList.remove('active');
+    }
+};
+
+const createModal = () => {
+    const modal = document.createElement('div');
+    modal.id = 'successModal';
+    modal.className = 'modal';
+
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+
+    const message = document.createElement('p');
+    message.textContent = 'Forma je uspešno poslata!';
+
+    const closeButton = document.createElement('span');
+    closeButton.className = 'close-button';
+    closeButton.textContent = '×';
+
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    modalContent.appendChild(closeButton);
+    modalContent.appendChild(message);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    return modal;
+};
+
+const modal = createModal();
+
+const formContainer = document.getElementById('form-container');
+const form = document.createElement('form');
 
 fields.forEach(field => {
     const formGroup = document.createElement('div');
@@ -130,64 +244,23 @@ fields.forEach(field => {
         formGroup.appendChild(label);
     }
 
+    let inputElement;
     if (field.type === 'dropdown') {
-        const select = document.createElement('select');
-        select.id = field.id;
-        select.name = field.id;
-        formGroup.appendChild(select);
+        inputElement = createDropdown(field);
     } else if (field.type === 'radio') {
-        const radioGroup = document.createElement('div');
-        radioGroup.classList.add('radio-checkbox-group');  // Dodajemo klasu za Flexbox
-
-        field.options.forEach(option => {
-            const input = document.createElement('input');
-            input.type = 'radio';
-            input.id = `${field.id}-${option}`;
-            input.name = field.id;
-            input.value = option;
-
-            input.addEventListener('change', () => {
-                const petNameDropdown = document.getElementById('pet-name');
-                petNameDropdown.innerHTML = '';
-                petNames[option].forEach(petName => {
-                    const optionElement = document.createElement('option');
-                    optionElement.value = petName;
-                    optionElement.textContent = petName;
-                    petNameDropdown.appendChild(optionElement);
-                });
-            });
-
-            const radioLabel = document.createElement('label');
-            radioLabel.htmlFor = `${field.id}-${option}`;
-            radioLabel.textContent = option;
-
-            radioGroup.appendChild(input);
-            radioGroup.appendChild(radioLabel);
-        });
-
-        formGroup.appendChild(radioGroup);
+        inputElement = createRadioButtons(field);
     } else if (field.type === 'checkbox') {
-        const input = document.createElement('input');
-        input.type = 'checkbox';
-        input.id = field.id;
-        input.name = field.id;
-
-        // Sada dodajemo samo jedan label za checkbox
+        inputElement = createInputField(field);
         const checkboxLabel = document.createElement('label');
         checkboxLabel.htmlFor = field.id;
         checkboxLabel.textContent = field.label;
-
-        formGroup.appendChild(input);
-        formGroup.appendChild(checkboxLabel);  // Ovaj deo dodaje samo jedan label za checkbox
+        formGroup.appendChild(inputElement);
+        formGroup.appendChild(checkboxLabel);
     } else {
-        const input = document.createElement('input');
-        input.type = field.type;
-        input.id = field.id;
-        input.name = field.id;
-        if (field.pattern) input.pattern = field.pattern;
-
-        formGroup.appendChild(input);
+        inputElement = createInputField(field);
     }
+
+    formGroup.appendChild(inputElement);
 
     if (field.errorMessage) {
         const errorMessage = document.createElement('span');
@@ -205,65 +278,41 @@ form.addEventListener('submit', (event) => {
 
     fields.forEach(field => {
         const input = document.getElementById(field.id);
-        const errorMessage = input?.nextElementSibling;  // Optional chaining za nextElementSibling
+        const errorMessage = input?.nextElementSibling;
 
-        if (!input) return; // Ako input ne postoji, preskoči dalje
+        if (!input) return;
 
-        // Provera za radio button
         if (field.type === 'radio') {
-            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);
-            if (!selectedRadio) {
-                isValid = false;
-                // Ako radio nije izabran, dodajemo grešku
-                if (errorMessage) errorMessage.classList.add('active');
-                // Dodajemo klasu 'error' za sve radio dugmadi
-                const radioButtons = document.querySelectorAll(`input[name="${field.id}"]`);
-                radioButtons.forEach(radio => radio.classList.add('error'));
-            } else {
-                // Ako je neko dugme izabrano, uklanjamo grešku
-                if (errorMessage) errorMessage.classList.remove('active');
-                const radioButtons = document.querySelectorAll(`input[name="${field.id}"]`);
-                radioButtons.forEach(radio => radio.classList.remove('error'));
-            }
+            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);  // Ispravka
+            setErrorState(input, errorMessage, !selectedRadio);
+            isValid = isValid && !!selectedRadio;
             return;
         }
 
-        // Provera za checkbox
         if (field.type === 'checkbox') {
-            if (!input.checked) {
-                isValid = false;
-                input.classList.add('error');
-                if (errorMessage) errorMessage.classList.add('active');
-            } else {
-                input.classList.remove('error');
-                input.classList.add('success');
-                if (errorMessage) errorMessage.classList.remove('active');
-            }
+            setErrorState(input, errorMessage, !input.checked);
+            isValid = isValid && input.checked;
             return;
         }
 
-        // Validacija za ostale inpute (text, email, itd.)
-        if (!input.value || (field.pattern && !new RegExp(field.pattern).test(input.value))) {
-            isValid = false;
-            input.classList.add('error');
-            if (errorMessage) errorMessage.classList.add('active');
-        } else {
-            input.classList.remove('error');
-            input.classList.add('success');
-            if (errorMessage) errorMessage.classList.remove('active');
-        }
+        const hasError = !input.value || (field.pattern && !new RegExp(field.pattern).test(input.value));
+        setErrorState(input, errorMessage, hasError);
+        isValid = isValid && !hasError;
     });
 
     if (isValid) {
-        alert('Forma je uspešno poslata!');
+        modal.style.display = 'flex';
     }
 });
 
 const submitButton = document.createElement('button');
+submitButton.className = 'button-forma';
 submitButton.type = 'submit';
 submitButton.textContent = 'Pošalji';
 
 form.appendChild(submitButton);
 formContainer.appendChild(form);
+
+
 
 
