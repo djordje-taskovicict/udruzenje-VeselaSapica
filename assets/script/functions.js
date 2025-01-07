@@ -65,13 +65,15 @@ for (let i = 0; i < contactLabels.length; i++) {
 }
 
 // Drustvene mreze
-let socialIcon = ["fab fa-instagram", "fab fa-twitter", "fab fa-facebook", "fab fa-linkedin", "fab fa-youtube"];
+let socialIcon = ["fab fa-instagram", "fab fa-twitter", "fab fa-facebook", "fab fa-linkedin", "fab fa-youtube", "fas fa-sitemap","fas fa-robot"];
 let socialLinkovi = ["https://www.instagram.com/yourprofile",
     "https://twitter.com/yourprofile",
     "https://www.facebook.com/yourprofile",
     "https://www.linkedin.com/in/yourprofile",
-    "https://www.youtube.com/yourprofile"];
-let socialName = ["Instagram", "Twitter", "Facebook", "LinkedIn", "YouTube"];
+    "https://www.youtube.com/yourprofile",
+    "assets/admin/sitemap.xml",
+    "assets/admin/robots.txt"];
+let socialName = ["Instagram", "Twitter", "Facebook", "LinkedIn", "YouTube","Sitemap","Robots"];
 
 let drustvene_mreze = document.getElementById("social");
 
