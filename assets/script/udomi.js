@@ -75,7 +75,6 @@ const dynamicText = `
 document.getElementById('info-container').innerHTML = dynamicText;
 
 
-
 const fields = [
     {
         label: 'Vaše ime:',
@@ -121,14 +120,14 @@ const fields = [
     {
         type: 'checkbox',
         id: 'terms',
-        label: 'I agree to the terms and conditions',
-        errorMessage: 'You must agree to the terms'
+        label: 'Slažem se sa uslovima korišćenja',
+        errorMessage: 'Morate se složiti sa uslovima korišćenja.'
     },
     {
         type: 'checkbox',
         id: 'privacy',
-        label: 'I agree to the privacy policy',
-        errorMessage: 'You must agree to the privacy policy'
+        label: 'Prihvatam politiku privatnosti',
+        errorMessage: 'Morate prihvatiti politiku privatnosti.'
     }
 ];
 
@@ -137,102 +136,12 @@ const petNames = {
     Mačka: ['', 'Mica', 'Mika', 'Garfild', 'Živojin', 'Vukica', 'Malisa', 'Ava']
 };
 
-const createInputField = (field) => {
-    const input = document.createElement('input');
-    input.type = field.type;
-    input.id = field.id;
-    input.name = field.id;
-    if (field.pattern) input.pattern = field.pattern;
-    if (field.id === 'appointment-date') {
-        input.min = new Date().toISOString().slice(0, 16); // Disable past dates
-    }
-    return input;
-};
-
-const createDropdown = (field) => {
-    const select = document.createElement('select');
-    select.id = field.id;
-    select.name = field.id;
-    return select;
-};
-
-const createRadioButtons = (field) => {
-    const radioGroup = document.createElement('div');
-    radioGroup.classList.add('radio-checkbox-group');
-
-    field.options.forEach(option => {
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.id = `${field.id}-${option}`;  // Ispravka
-        input.name = field.id;
-        input.value = option;
-
-        input.addEventListener('change', () => {
-            const petNameDropdown = document.getElementById('pet-name');
-            petNameDropdown.innerHTML = '';
-            petNames[option].forEach(petName => {
-                const optionElement = document.createElement('option');
-                optionElement.value = petName;
-                optionElement.textContent = petName;
-                petNameDropdown.appendChild(optionElement);
-            });
-        });
-
-        const radioLabel = document.createElement('label');
-        radioLabel.htmlFor = `${field.id}-${option}`;  // Ispravka
-        radioLabel.textContent = option;
-
-        radioGroup.appendChild(input);
-        radioGroup.appendChild(radioLabel);
-    });
-
-    return radioGroup;
-};
-
-const setErrorState = (input, errorMessageElement, hasError) => {
-    if (hasError) {
-        input.classList.add('error');
-        input.classList.remove('success');
-        errorMessageElement?.classList.add('active');
-    } else {
-        input.classList.remove('error');
-        input.classList.add('success');
-        errorMessageElement?.classList.remove('active');
-    }
-};
-
-const createModal = () => {
-    const modal = document.createElement('div');
-    modal.id = 'successModal';
-    modal.className = 'modal';
-
-    const modalContent = document.createElement('div');
-    modalContent.className = 'modal-content';
-
-    const message = document.createElement('p');
-    message.textContent = 'Forma je uspešno poslata!';
-
-    const closeButton = document.createElement('span');
-    closeButton.className = 'close-button';
-    closeButton.textContent = '×';
-
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    modalContent.appendChild(closeButton);
-    modalContent.appendChild(message);
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    return modal;
-};
-
-const modal = createModal();
-
 const formContainer = document.getElementById('form-container');
 const form = document.createElement('form');
+form.action = "https://formspree.io/f/xvggvenz";
+form.method = "POST";
 
+// Dinamički kreiranje polja forme
 fields.forEach(field => {
     const formGroup = document.createElement('div');
     formGroup.className = 'form-group';
@@ -246,18 +155,46 @@ fields.forEach(field => {
 
     let inputElement;
     if (field.type === 'dropdown') {
-        inputElement = createDropdown(field);
+        inputElement = document.createElement('select');
+        inputElement.id = field.id;
+        inputElement.name = field.id;
     } else if (field.type === 'radio') {
-        inputElement = createRadioButtons(field);
-    } else if (field.type === 'checkbox') {
-        inputElement = createInputField(field);
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.htmlFor = field.id;
-        checkboxLabel.textContent = field.label;
-        formGroup.appendChild(inputElement);
-        formGroup.appendChild(checkboxLabel);
+        const radioGroup = document.createElement('div');
+        field.options.forEach(option => {
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.id = `${field.id}-${option}`;
+            input.name = field.id;
+            input.value = option;
+
+            input.addEventListener('change', () => {
+                const petNameDropdown = document.getElementById('pet-name');
+                petNameDropdown.innerHTML = '';
+                petNames[option].forEach(petName => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = petName;
+                    optionElement.textContent = petName;
+                    petNameDropdown.appendChild(optionElement);
+                });
+            });
+
+            const radioLabel = document.createElement('label');
+            radioLabel.htmlFor = `${field.id}-${option}`;
+            radioLabel.textContent = option;
+
+            radioGroup.appendChild(input);
+            radioGroup.appendChild(radioLabel);
+        });
+        inputElement = radioGroup;
     } else {
-        inputElement = createInputField(field);
+        inputElement = document.createElement('input');
+        inputElement.type = field.type;
+        inputElement.id = field.id;
+        inputElement.name = field.id;
+        if (field.pattern) inputElement.pattern = field.pattern;
+        if (field.type === 'datetime-local') {
+            inputElement.min = new Date().toISOString().slice(0, 16);
+        }
     }
 
     formGroup.appendChild(inputElement);
@@ -272,47 +209,14 @@ fields.forEach(field => {
     form.appendChild(formGroup);
 });
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    let isValid = true;
-
-    fields.forEach(field => {
-        const input = document.getElementById(field.id);
-        const errorMessage = input?.nextElementSibling;
-
-        if (!input) return;
-
-        if (field.type === 'radio') {
-            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);  // Ispravka
-            setErrorState(input, errorMessage, !selectedRadio);
-            isValid = isValid && !!selectedRadio;
-            return;
-        }
-
-        if (field.type === 'checkbox') {
-            setErrorState(input, errorMessage, !input.checked);
-            isValid = isValid && input.checked;
-            return;
-        }
-
-        const hasError = !input.value || (field.pattern && !new RegExp(field.pattern).test(input.value));
-        setErrorState(input, errorMessage, hasError);
-        isValid = isValid && !hasError;
-    });
-
-    if (isValid) {
-        modal.style.display = 'flex';
-    }
-});
-
+// Submit dugme
 const submitButton = document.createElement('button');
-submitButton.className = 'button-forma';
 submitButton.type = 'submit';
 submitButton.textContent = 'Pošalji';
-
+submitButton.className = 'button-forma';
 form.appendChild(submitButton);
-formContainer.appendChild(form);
 
+formContainer.appendChild(form);
 
 
 
