@@ -272,6 +272,56 @@ form.addEventListener('submit', (event) => {
     });
 
     if (isValid) {
+        // Submit form data using Fetch API
+        const formData = new FormData(form);
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json',
+                // Adding proper content-type if needed for Formspree
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                window.location.href = 'hvala.html';  // Redirect to thank-you page
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+});
+('submit', (event) => {
+    event.preventDefault();
+    let isValid = true;
+
+    fields.forEach(field => {
+        const input = document.getElementById(field.id);
+        const errorMessage = input?.nextElementSibling;
+
+        if (!input) return;
+
+        if (field.type === 'radio') {
+            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);
+            setErrorState(input, errorMessage, !selectedRadio);
+            isValid = isValid && !!selectedRadio;
+            return;
+        }
+
+        if (field.type === 'checkbox') {
+            setErrorState(input, errorMessage, !input.checked);
+            isValid = isValid && input.checked;
+            return;
+        }
+
+        const hasError = !input.value || (field.pattern && !new RegExp(field.pattern).test(input.value));
+        setErrorState(input, errorMessage, hasError);
+        isValid = isValid && !hasError;
+    });
+
+    if (isValid) {
         // Submit form data to Formspree (Using fetch API)
         fetch(form.action, {
             method: 'POST',

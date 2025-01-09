@@ -307,7 +307,6 @@ footer {
     border-radius: 30px;
     padding:1.5rem;
 }
-/* Stilizacija za formu */
 .form-group {
     margin-bottom: 15px;
     display: flex;
@@ -394,6 +393,7 @@ input.error, input.success, select.error, select.success {
     .radio-checkbox-group label {
         margin-right: 10px; /* Razmak između radio dugmadi/checkbox i labela */
     }
+
 .modal {
     display: none;
     position: fixed;

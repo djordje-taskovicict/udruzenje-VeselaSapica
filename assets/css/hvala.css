@@ -1,0 +1,47 @@
+﻿/* Generalni stil za celu stranicu */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4; /* Pozadinska boja */
+}
+
+/* Stil za kontejner hvala */
+.thank-you-container {
+    text-align: center;
+    padding: 50px;
+    background: #e9f7e7; /* Svetlo zelena pozadina */
+    border-radius: 8px; /* Zaobljeni ivici */
+    border: 3px solid #28a745; /* Zeleni border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Blaga senka */
+    width: 80%; /* Fleksibilna širina */
+    max-width: 600px; /* Maksimalna širina */
+}
+
+    /* Stil za h1 */
+    .thank-you-container h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+        color: #28a745; /* Zeleni tekst za naslov */
+    }
+
+    /* Stil za paragrafe */
+    .thank-you-container p {
+        font-size: 1.1em;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Stil za link */
+    .thank-you-container a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .thank-you-container a:hover {
+            text-decoration: underline;
+        }
