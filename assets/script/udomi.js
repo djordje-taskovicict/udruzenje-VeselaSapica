@@ -283,7 +283,7 @@ form.addEventListener('submit', (event) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                window.location.href = 'https://formspree.io/thank-you'; // Redirect to another page on success
+                window.location.href = 'https://formspree.io/thank-you';  // Redirect to Formspree thank-you page
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -298,3 +298,4 @@ submitButton.textContent = 'Pošalji';
 
 form.appendChild(submitButton);
 formContainer.appendChild(form);
+
