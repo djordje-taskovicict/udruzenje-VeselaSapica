@@ -283,7 +283,7 @@ form.addEventListener('submit', (event) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                window.location.href = 'https://www.example.com/thank-you'; // Redirect to another page on success
+                window.location.href = 'https://formspree.io/thank-you'; // Redirect to another page on success
             })
             .catch(error => {
                 console.error('Error:', error);
