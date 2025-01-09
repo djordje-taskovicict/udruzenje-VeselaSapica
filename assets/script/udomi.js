@@ -79,7 +79,7 @@ const fields = [
         label: 'Vaše ime:',
         id: 'name',
         type: 'text',
-        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',
+        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',  // Ispravljeno za karaktere sa dijakritikom
         errorMessage: 'Ime sme sadržati samo slova i razmake.'
     },
     {
@@ -93,7 +93,7 @@ const fields = [
         label: 'Vaša email adresa:',
         id: 'email',
         type: 'email',
-        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',
+        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',  // Ispravljeno da funkcioniše u HTML-u
         errorMessage: 'Unesite validnu email adresu (primer: korisnik@email.com).'
     },
     {
@@ -161,7 +161,7 @@ const createRadioButtons = (field) => {
     field.options.forEach(option => {
         const input = document.createElement('input');
         input.type = 'radio';
-        input.id = `${field.id}-${option}`;  // Ispravka
+        input.id = `${field.id}-${option}`;
         input.name = field.id;
         input.value = option;
 
@@ -177,7 +177,7 @@ const createRadioButtons = (field) => {
         });
 
         const radioLabel = document.createElement('label');
-        radioLabel.htmlFor = `${field.id}-${option}`;  // Ispravka
+        radioLabel.htmlFor = `${field.id}-${option}`;
         radioLabel.textContent = option;
 
         radioGroup.appendChild(input);
@@ -199,39 +199,10 @@ const setErrorState = (input, errorMessageElement, hasError) => {
     }
 };
 
-const createModal = () => {
-    const modal = document.createElement('div');
-    modal.id = 'successModal';
-    modal.className = 'modal';
-
-    const modalContent = document.createElement('div');
-    modalContent.className = 'modal-content';
-
-    const message = document.createElement('p');
-    message.textContent = 'Forma je uspešno poslata!';
-
-    const closeButton = document.createElement('span');
-    closeButton.className = 'close-button';
-    closeButton.textContent = '×';
-
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    modalContent.appendChild(closeButton);
-    modalContent.appendChild(message);
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    return modal;
-};
-
-const modal = createModal();
-
 const formContainer = document.getElementById('form-container');
 const form = document.createElement('form');
-form.action = 'https://formspree.io/f/xvggvenz'; // Formspree URL
-form.method = 'POST'; // POST metoda za slanje
+form.action = 'https://formspree.io/f/xvggvenz';  // Formspree URL
+form.method = 'POST';
 
 fields.forEach(field => {
     const formGroup = document.createElement('div');
@@ -273,7 +244,7 @@ fields.forEach(field => {
 });
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Sprečava napuštanje stranice
+    event.preventDefault();
     let isValid = true;
 
     fields.forEach(field => {
@@ -283,7 +254,7 @@ form.addEventListener('submit', (event) => {
         if (!input) return;
 
         if (field.type === 'radio') {
-            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);  // Ispravka
+            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);
             setErrorState(input, errorMessage, !selectedRadio);
             isValid = isValid && !!selectedRadio;
             return;
@@ -301,20 +272,21 @@ form.addEventListener('submit', (event) => {
     });
 
     if (isValid) {
-        // Slanje forme putem Formspree
+        // Submit form data to Formspree (Using fetch API)
         fetch(form.action, {
-            method: form.method,
-            body: new FormData(form)
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
         })
-            .then(response => {
-                if (response.ok) {
-                    modal.style.display = 'flex'; // Prikazuje modal sa uspešnom porukom
-                } else {
-                    alert('Došlo je do greške prilikom slanja forme.');
-                }
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                window.location.href = 'https://www.example.com/thank-you'; // Redirect to another page on success
             })
             .catch(error => {
-                alert('Došlo je do greške prilikom slanja forme.');
+                console.error('Error:', error);
             });
     }
 });
