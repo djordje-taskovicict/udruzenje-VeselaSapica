@@ -119,14 +119,14 @@ const fields = [
     {
         type: 'checkbox',
         id: 'terms',
-        label: 'I agree to the terms and conditions',
-        errorMessage: 'You must agree to the terms'
+        label: 'Slažem se sa uslovima korišćenja',
+        errorMessage: 'Morate se složiti sa uslovima korišćenja.'
     },
     {
         type: 'checkbox',
         id: 'privacy',
-        label: 'I agree to the privacy policy',
-        errorMessage: 'You must agree to the privacy policy'
+        label: 'Prihvatam politiku privatnosti',
+        errorMessage: 'Morate prihvatiti politiku privatnosti.'
     }
 ];
 
@@ -135,6 +135,7 @@ const petNames = {
     Mačka: ['', 'Mica', 'Mika', 'Garfild', 'Živojin', 'Vukica', 'Malisa', 'Ava']
 };
 
+// Funkcije za kreiranje polja
 const createInputField = (field) => {
     const input = document.createElement('input');
     input.type = field.type;
@@ -204,6 +205,7 @@ const form = document.createElement('form');
 form.action = 'https://formspree.io/f/xvggvenz';  // Formspree URL
 form.method = 'POST';
 
+// Dinamičko kreiranje formi
 fields.forEach(field => {
     const formGroup = document.createElement('div');
     formGroup.className = 'form-group';
@@ -243,57 +245,17 @@ fields.forEach(field => {
     form.appendChild(formGroup);
 });
 
+// Dodavanje submit dugmeta
+const submitButton = document.createElement('button');
+submitButton.className = 'button-forma';
+submitButton.type = 'submit';
+submitButton.textContent = 'Pošalji';
+
+form.appendChild(submitButton);
+formContainer.appendChild(form);
+
+// Obrada slanja forme
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    let isValid = true;
-
-    fields.forEach(field => {
-        const input = document.getElementById(field.id);
-        const errorMessage = input?.nextElementSibling;
-
-        if (!input) return;
-
-        if (field.type === 'radio') {
-            const selectedRadio = document.querySelector(`input[name="${field.id}"]:checked`);
-            setErrorState(input, errorMessage, !selectedRadio);
-            isValid = isValid && !!selectedRadio;
-            return;
-        }
-
-        if (field.type === 'checkbox') {
-            setErrorState(input, errorMessage, !input.checked);
-            isValid = isValid && input.checked;
-            return;
-        }
-
-        const hasError = !input.value || (field.pattern && !new RegExp(field.pattern).test(input.value));
-        setErrorState(input, errorMessage, hasError);
-        isValid = isValid && !hasError;
-    });
-
-    if (isValid) {
-        // Submit form data using Fetch API
-        const formData = new FormData(form);
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json',
-                // Adding proper content-type if needed for Formspree
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                window.location.href = 'hvala.html';  // Redirect to thank-you page
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-});
-('submit', (event) => {
     event.preventDefault();
     let isValid = true;
 
@@ -333,7 +295,7 @@ form.addEventListener('submit', (event) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                window.location.href = 'https://formspree.io/thank-you';  // Redirect to Formspree thank-you page
+                window.location.href = 'hvala.html';  // Redirekcija na thank you stranicu
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -341,11 +303,4 @@ form.addEventListener('submit', (event) => {
     }
 });
 
-const submitButton = document.createElement('button');
-submitButton.className = 'button-forma';
-submitButton.type = 'submit';
-submitButton.textContent = 'Pošalji';
-
-form.appendChild(submitButton);
-formContainer.appendChild(form);
 
