@@ -1,20 +1,20 @@
 ﻿// Podaci za slike, naslove i opise
 const galleryData = [
-    { src: 'images/image1.jpg', title: 'Mini', text: 'Ovo je Mini.' },
-    { src: 'images/image2.jpg', title: 'Mica', text: 'Ovo je Mica.' },
-    { src: 'images/image3.jpg', title: 'Izy i Bety', text: 'Ovo su štenci Izy i Bety.' },
-    { src: 'images/image4.jpg', title: 'Mika', text: 'Ovo je Mika.' },
-    { src: 'images/image5.jpg', title: 'Ljubiša/Bubi', text: 'Ovo je Bubi.' },
-    { src: 'images/image6.jpg', title: 'Maza', text: 'Ovo je Maza.' },
-    { src: 'images/image7.jpg', title: 'Aki', text: 'Ovo je Aki.' },
-    { src: 'images/image8.jpg', title: 'Garfild', text: 'Ovo je mačak Garfild.' },
-    { src: 'images/image9.jpg', title: 'Pera', text: 'Ovo je Pera.' },
-    { src: 'images/image10.jpg', title: 'Živojin', text: 'Ovo je mačak Živojin.' },
-    { src: 'images/image11.jpg', title: 'Vuki', text: 'Ovo je Vuki.' },
-    { src: 'images/image12.jpg', title: 'Vukica', text: 'Ovo je mače Vukica.' },
-    { src: 'images/image13.jpg', title: 'Mališa', text: 'Ovo je mače Mališa.' },
-    { src: 'images/image14.jpg', title: 'Ava', text: 'Ovo je Ava.' },
-    { src: 'images/image15.jpg', title: 'Astor', text: 'Ovo je Astor.' }
+    { src: 'images/image1.jpg', title: 'Mini', text: 'Mini je ljubazna kuca koja traži ljubav i pažnju.' },
+    { src: 'images/image2.jpg', title: 'Mica', text: 'Mica je vesela maca koja čeka dom pun pažnje.' },
+    { src: 'images/image3.jpg', title: 'Izy i Bety', text: 'Izy i Bety su dva vesela stenca koji žele novi dom.' },
+    { src: 'images/image4.jpg', title: 'Mika', text: 'Mika je predivna maca koja voli da se mazi.' },
+    { src: 'images/image5.jpg', title: 'Bubi', text: 'Bubi je miran pas koji voli spavati i biti voljen.' },
+    { src: 'images/image6.jpg', title: 'Maza', text: 'Maza je draga maca koja čeka ljubavnu porodicu.' },
+    { src: 'images/image7.jpg', title: 'Aki', text: 'Aki je nežan pas koji se raduje novoj porodici.' },
+    { src: 'images/image8.jpg', title: 'Garfild', text: 'Garfild je zabavna maca koja voli da spava.' },
+    { src: 'images/image9.jpg', title: 'Pera', text: 'Pera je veran pas koji želi biti deo porodice.' },
+    { src: 'images/image10.jpg', title: 'Živojin', text: 'Živojin je hrabar mačak koji zaslužuje pažnju i ljubav.' },
+    { src: 'images/image11.jpg', title: 'Vuki', text: 'Vuki je energičan pas koji voli trčanje, decu i igru.' },
+    { src: 'images/image12.jpg', title: 'Vukica', text: 'Vukica je nežna maca koja voli da se mazi.' },
+    { src: 'images/image13.jpg', title: 'Mališa', text: 'Mališa je mačak koji traži sigurnost i ljubavnu porodicu.' },
+    { src: 'images/image14.jpg', title: 'Ava', text: 'Ava je vesela maca koja traži svoj novi dom.' },
+    { src: 'images/image15.jpg', title: 'Astor', text: 'Astor je odan pas koji voli da provodi vreme sa ljudima.' }
 ];
 
 function createGallery(data) {
