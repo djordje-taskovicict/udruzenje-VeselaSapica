@@ -359,8 +359,50 @@ input.error, input.success, select.error, select.success {
 @media (max-width: 575px) {
     /* Slajder: zadrži tekst na slajderu i smanjiti veličinu */
     #myCarousel {
-        height: 20rem; /* Manja visina za mobilne uređaje */
+        height: 50vh; /* Visina slajdera */
     }
+
+    .carousel-item.active img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        animation: fadeIn 1.2s ease-out; /* Animacija */
+        transform-origin: top center; /* Slika raste prema dole, iz gornjeg centra */
+    }
+
+    .carousel-item.active {
+        position: relative;
+    }
+
+        .carousel-item.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+    .carousel-caption {
+        z-index: 2; /* Tekst ide iznad gradijenta */
+    }
+
+    /* Animacija - Slika počinje manja i raste prema dole */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scaleY(0.8);
+        }
+        /* Početno stanje - slika manja vertikalno */
+        100% {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+        /* Finalno stanje - slika normalne veličine vertikalno */
+    }
+
 
     .carousel-caption {
         bottom: 10%; /* Pomeriti tekst bliže dnu */
