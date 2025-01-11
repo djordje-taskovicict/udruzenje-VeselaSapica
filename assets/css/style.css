@@ -385,29 +385,22 @@ input.error, input.success, select.error, select.success {
 
 /* Responsive stilovi */
 
-/* Mobilni uređaji (do 576px) */
-@media (max-width: 576px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #logo {
-        height: 3rem;
-    }
-
-    .navbar-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
+/* Mali ekrani */
+@media only screen and (max-width: 768px) {
     #myCarousel {
-        height: 20rem;
+        height: 300px;
+        min-height: 300px;
+    }
+
+    .carousel-item img {
+        object-fit: contain; /* Slika ostaje unutar okvira bez obrezivanja */
     }
 
     .carousel-caption {
         bottom: 10%;
-        background-color: rgba(0, 0, 0, 0.5); /* Istaknutija pozadina za tekst */
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 20;
     }
 
         .carousel-caption h5 {
@@ -419,72 +412,89 @@ input.error, input.success, select.error, select.success {
         }
 
         .carousel-caption .btn {
-            font-size: 0.9rem;
+            padding: 8px 15px;
         }
+}
 
-    .card-img-top {
-        height: 150px;
+/* Tablet i laptop (768px+ širina) */
+@media only screen and (min-width: 768px) {
+    #myCarousel {
+        height: 450px; /* Viša visina za tablete i laptope */
+    }
+
+    .carousel-item img {
+        object-fit: cover;
     }
 }
 
-/* Tablet uređaji (577px - 992px) */
-@media (min-width: 577px) and (max-width: 992px) {
-    .navbar {
-        padding: 1rem;
-    }
-
-    #logo {
-        height: 3.5rem;
-    }
-
-    .navbar-links {
-        gap: 20px;
-    }
-
-    #myCarousel {
-        height: 30rem;
-    }
-
-    .carousel-caption h5 {
-        font-size: 2rem;
-    }
-
-    .carousel-caption p {
-        font-size: 1.1rem;
-    }
-
-    .card-img-top {
-        height: 175px;
-    }
+/* Galerija */
+.gallery-container {
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-/* Laptop uređaji (993px - 1200px) */
-@media (min-width: 993px) and (max-width: 1200px) {
-    .navbar {
-        padding: 1.5rem;
+.gallery-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
+}
+
+/* Karte u galeriji */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    padding: 0.4rem;
+    flex: 1;
+    min-width: 250px;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     }
 
-    #logo {
-        height: 4rem;
+.card-img-top {
+    transition: filter 0.2s;
+}
+
+    .card-img-top:hover {
+        filter: brightness(90%);
     }
 
-    .navbar-links {
-        gap: 25px;
-    }
+/* Stilizacija za info container */
+#form-container {
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding: 1.5rem;
+}
 
-    #myCarousel {
-        height: 35rem;
-    }
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
-    .carousel-caption h5 {
-        font-size: 2.25rem;
-    }
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
 
-    .carousel-caption p {
-        font-size: 1.25rem;
-    }
-
-    .card-img-top {
-        height: 200px;
-    }
+input, select, .radio-group, .checkbox-group {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
 }
