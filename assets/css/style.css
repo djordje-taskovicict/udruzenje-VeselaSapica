@@ -367,7 +367,7 @@ input.error, input.success, select.error, select.success {
         height: 100%;
         object-fit: cover;
         object-position: center;
-        animation: fadeIn 1.2s ease-out; /* Animacija */
+        animation: fadeIn 1.3s ease-out; /* Animacija */
         transform-origin: top center; /* Slika raste prema dole, iz gornjeg centra */
     }
 
@@ -398,7 +398,7 @@ input.error, input.success, select.error, select.success {
         /* Početno stanje - slika manja vertikalno */
         100% {
             opacity: 1;
-            transform: scaleY(1);
+            transform: scaleY(0.8);
         }
         /* Finalno stanje - slika normalne veličine vertikalno */
     }
