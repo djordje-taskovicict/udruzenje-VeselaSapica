@@ -134,46 +134,6 @@ footer {
         padding: 8px 15px;
     }
 
-/* Mali ekrani */
-@media only screen and (max-width: 768px) {
-    .navbar-brand {
-        margin-right: auto; /* Osiguraj da logo ostane levo */
-    }
-
-    .navbar-toggler {
-        margin-left: auto; /* Osiguraj da toggler ostane desno */
-        order: 2; /* Ako je potrebno, stavi toggler na drugi redosled */
-    }
-    
-    #myCarousel {
-        height: 300px;
-        min-height: 300px;
-    }
-
-    .carousel-item img {
-        object-fit: contain;
-    }
-
-    .carousel-caption {
-        bottom: 10%;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
-        z-index: 20;
-    }
-
-        .carousel-caption h5 {
-            font-size: 1.5rem;
-        }
-
-        .carousel-caption p {
-            font-size: 1rem;
-        }
-
-        .carousel-caption .btn {
-            padding: 8px 15px;
-        }
-}
-
 #animal-chart-section {
     padding: 65px 0; 
 }
@@ -423,3 +383,108 @@ input.error, input.success, select.error, select.success {
     cursor: pointer;
 }
 
+/* Responsive stilovi */
+
+/* Mobilni uređaji (do 576px) */
+@media (max-width: 576px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #logo {
+        height: 3rem;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #myCarousel {
+        height: 20rem;
+    }
+
+    .carousel-caption {
+        bottom: 10%;
+        background-color: rgba(0, 0, 0, 0.5); /* Istaknutija pozadina za tekst */
+    }
+
+        .carousel-caption h5 {
+            font-size: 1.5rem;
+        }
+
+        .carousel-caption p {
+            font-size: 1rem;
+        }
+
+        .carousel-caption .btn {
+            font-size: 0.9rem;
+        }
+
+    .card-img-top {
+        height: 150px;
+    }
+}
+
+/* Tablet uređaji (577px - 992px) */
+@media (min-width: 577px) and (max-width: 992px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    #logo {
+        height: 3.5rem;
+    }
+
+    .navbar-links {
+        gap: 20px;
+    }
+
+    #myCarousel {
+        height: 30rem;
+    }
+
+    .carousel-caption h5 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.1rem;
+    }
+
+    .card-img-top {
+        height: 175px;
+    }
+}
+
+/* Laptop uređaji (993px - 1200px) */
+@media (min-width: 993px) and (max-width: 1200px) {
+    .navbar {
+        padding: 1.5rem;
+    }
+
+    #logo {
+        height: 4rem;
+    }
+
+    .navbar-links {
+        gap: 25px;
+    }
+
+    #myCarousel {
+        height: 35rem;
+    }
+
+    .carousel-caption h5 {
+        font-size: 2.25rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.25rem;
+    }
+
+    .card-img-top {
+        height: 200px;
+    }
+}

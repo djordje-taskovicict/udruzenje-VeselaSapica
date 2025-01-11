@@ -45,3 +45,53 @@ body {
         .thank-you-container a:hover {
             text-decoration: underline;
         }
+
+/* Responsive stilovi */
+
+/* Mobilni uređaji (do 576px) */
+@media (max-width: 576px) {
+    .thank-you-container {
+        padding: 20px; /* Smanjen padding */
+        width: 90%; /* Veća širina za manje uređaje */
+    }
+
+        .thank-you-container h1 {
+            font-size: 1.5em; /* Manja veličina naslova */
+        }
+
+        .thank-you-container p {
+            font-size: 1em; /* Manja veličina teksta */
+        }
+}
+
+/* Tablet uređaji (577px - 992px) */
+@media (min-width: 577px) and (max-width: 992px) {
+    .thank-you-container {
+        padding: 40px; /* Srednji padding za tablet */
+        width: 85%;
+    }
+
+        .thank-you-container h1 {
+            font-size: 1.75em; /* Srednja veličina naslova */
+        }
+
+        .thank-you-container p {
+            font-size: 1.05em; /* Srednja veličina teksta */
+        }
+}
+
+/* Laptop uređaji (993px - 1200px) */
+@media (min-width: 993px) and (max-width: 1200px) {
+    .thank-you-container {
+        padding: 50px; /* Originalan padding */
+        width: 80%; /* Originalna širina */
+    }
+
+        .thank-you-container h1 {
+            font-size: 2em; /* Originalna veličina naslova */
+        }
+
+        .thank-you-container p {
+            font-size: 1.1em; /* Originalna veličina teksta */
+        }
+}
