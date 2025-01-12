@@ -5,7 +5,7 @@ const galleryData = [
     { src: 'images/image3.jpg', title: 'Izy i Bety', text: 'Izy i Bety su dva vesela stenca koji žele novi dom.' },
     { src: 'images/image4.jpg', title: 'Mika', text: 'Mika je predivna maca koja voli da se mazi.' },
     { src: 'images/image5.jpg', title: 'Bubi', text: 'Bubi je miran pas koji voli spavati i biti voljen.' },
-    { src: 'images/image6.jpg', title: 'Maza', text: 'Maza je draga maca koja čeka ljubavnu porodicu.' },
+    { src: 'images/image6.jpg', title: 'Maza', text: 'Maza je draga kuca koja čeka ljubavnu porodicu.' },
     { src: 'images/image7.jpg', title: 'Aki', text: 'Aki je nežan pas koji se raduje novoj porodici.' },
     { src: 'images/image8.jpg', title: 'Garfild', text: 'Garfild je zabavna maca koja voli da spava.' },
     { src: 'images/image9.jpg', title: 'Pera', text: 'Pera je veran pas koji želi biti deo porodice.' },

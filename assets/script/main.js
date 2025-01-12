@@ -8,13 +8,13 @@ let Slike = [
 ];
 
 let text = [
-    "Dobrodosli na sajt udruzenja Vesela Šapica!",
+    "Udružnje Vesela Šapica!",
     "I mi zelimo dom, udomi ne kupuj!"
 ];
 
 let dugmetxt = [
     "Saznaj vise",
-    "Zakazi upoznavanje sa psom/mackom",
+    "Zakazi",
 ];
 
 let dugmad = [
@@ -23,8 +23,8 @@ let dugmad = [
 ];
 
 let Opisi = [
-    "Klikom na dugme ispod mozete saznati vise o nasem udruzenju.",
-    "Mozete pogledati pse/macke koje su trenutno kod nas, a mozete i zakazati upoznavanje sa psom/mackom koji su Vam se svideli."
+    "Klikom na dugme mozete saznati vise o nasem udruzenju.",
+    "Klikom na dugme mozete pogledati i zakazati upoznavanje sa zivotinjama."
 ];
 
 let carouselInner = document.getElementById("carouselItems");
@@ -43,7 +43,7 @@ for (let i = 0; i < Slike.length; i++) {
     img.alt = `Slide ${i + 1}`;
 
     let caption = document.createElement("div");
-    caption.classList.add("carousel-caption", "d-none", "d-md-block");
+    caption.classList.add("carousel-caption");
 
     // Naslov
     let h5 = document.createElement("h5");
