@@ -103,12 +103,6 @@ footer {
     height: 100%;
 }
 
-    .carousel-item img {
-        width: 100%;
-        height: auto;
-        object-fit: cover; /* Slika popunjava okvir, ali može biti obrezana */
-    }
-
 /* Caption */
 .carousel-caption {
     position: absolute;
@@ -116,20 +110,23 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     color: white;
-    border-radius:10px;
+    border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.6); /* Tamnija poluprovidna pozadina */
     padding: 10px;
     text-align: center;
     z-index: 2;
+    width: 70%;
 }
 
     .carousel-caption h5 {
         font-size: 2.25rem;
+        padding:5px;
         font-weight:bold;
     }
 
     .carousel-caption p {
         font-size: 1.25rem;
+        padding:5px;
         font-weight:bold;
     }
 
@@ -362,24 +359,8 @@ input.error, input.success, select.error, select.success {
 @media (max-width: 600px) {
     /* Slajder: zadrži tekst na slajderu i smanjiti veličinu */
     #myCarousel {
-        height: 22rem; /* Visina slajdera - ekvivalent 50vh */
+        height: 50vh; /* Visina slajdera - ekvivalent 50vh */
     }
-
-    .carousel-item.active {
-        display: flex; /* Postavljamo slajder kao flexbox */
-        justify-content: center; /* Centriranje slika i teksta */
-        align-items: center; /* Vertikalno centriranje sadržaja */
-        position: relative;
-    }
-
-        .carousel-item.active img {
-            width: 100%; /* Slika pokriva ceo prostor */
-            height: 100%; /* Visina slike odgovara visini slajdera */
-            object-fit: cover; /* Slika prekriva ceo prostor */
-            object-position: center; /* Pozicioniranje slike u centru */
-            position: absolute;
-        }
-
     .carousel-caption {
         position: absolute;
         background-color: rgba(0, 0, 0, 0.6); /* Tamnija poluprovidna pozadina */
@@ -390,17 +371,19 @@ input.error, input.success, select.error, select.success {
         margin-left: auto;
         margin-right: auto; /* Centriranje teksta */
         padding: 15px; /* Povećan padding za bolji razmak */
-        width:60%;
+        width:50%;
     }
 
         .carousel-caption h5 {
             font-size: 0.8rem; /* Manja veličina za naslov */
             font-weight: bold;
+            padding:5px;
             margin-bottom: 10px;
         }
 
         .carousel-caption p {
             font-size: 0.6rem; /* Smanjen font za opis */
+            padding: 5px;
             margin-bottom: 15px; /* Razmak između opisa i dugmeta */
         }
 
@@ -477,21 +460,25 @@ input.error, input.success, select.error, select.success {
         text-align: center;
         margin-left: auto;
         margin-right: auto; /* Centriranje teksta */
+        width: 75%;
     }
 
         .carousel-caption h5 {
             font-size: 1.8rem; /* Manja veličina za naslov */
             font-weight: bold;
+            padding: 5px;
             margin-bottom: 15px;
         }
 
         .carousel-caption p {
             font-size: 1.6rem; /* Smanjen font za opis */
+            padding: 5px;
             margin-bottom: 20px; /* Razmak između opisa i dugmeta */
         }
 
         .carousel-caption a.btn {
             font-size: 1.3rem;
+            padding: 5px;
             padding: 12px 25px;
         }
 
@@ -535,21 +522,25 @@ input.error, input.success, select.error, select.success {
         text-align: center;
         margin-left: auto;
         margin-right: auto; /* Centriranje teksta */
+        width: 75%;
     }
 
         .carousel-caption h5 {
             font-size: 1.6rem; /* Manja veličina za naslov */
             font-weight: bold;
+            padding: 5px;
             margin-bottom: 15px;
         }
 
         .carousel-caption p {
             font-size: 1.4rem; /* Smanjen font za opis */
+            padding: 5px;
             margin-bottom: 20px; /* Razmak između opisa i dugmeta */
         }
 
         .carousel-caption a.btn {
             font-size: 1.2rem;
+            padding: 5px;
             padding: 10px 20px;
         }
 

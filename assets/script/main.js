@@ -1,6 +1,6 @@
 ﻿
 
-//Slajder
+// Slajder
 // Nizovi sa podacima (slikama, tekstovima i dugmetima)
 let Slike = [
     "img/Vesela_Sapica.jpg",
@@ -37,10 +37,10 @@ for (let i = 0; i < Slike.length; i++) {
         div.classList.add("active");
     }
 
-    let img = document.createElement("img");
-    img.src = Slike[i];
-    img.classList.add("d-block", "w-100");
-    img.alt = `Slide ${i + 1}`;
+    // Postavljanje slike kao pozadine
+    div.style.backgroundImage = `url(${Slike[i]})`;
+    div.style.backgroundSize = 'cover'; // Slika popunjava prostor
+    div.style.backgroundPosition = 'center'; // Centriranje slike
 
     let caption = document.createElement("div");
     caption.classList.add("carousel-caption");
@@ -63,12 +63,12 @@ for (let i = 0; i < Slike.length; i++) {
     caption.appendChild(p);
     caption.appendChild(button);
 
-    div.appendChild(img);
     div.appendChild(caption);
 
     // Dodavanje novog itema u carousel
     carouselInner.appendChild(div);
 }
+
 
 let opis = "Vesela Šapica je udruženje posvećeno zbrinjavanju napuštenih";
 opis += "životinja i njihovom udomljavanju.Naša misija je stvaranje sigurnih";
