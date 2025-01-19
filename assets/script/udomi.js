@@ -2,7 +2,7 @@
 const galleryData = [
     { src: 'images/image1.jpg', title: 'Mini', text: 'Mini je ljubazna kuca koja traži ljubav i pažnju.' },
     { src: 'images/image2.jpg', title: 'Mica', text: 'Mica je vesela maca koja čeka dom pun pažnje.' },
-    { src: 'images/image3.jpg', title: 'Izy i Bety', text: 'Izy i Bety su dva vesela stenca koji žele novi dom.' },
+    { src: 'images/image3.jpg', title: 'Izy i Bety', text: 'Izy i Bety su dva vesela štenca koji žele novi dom.' },
     { src: 'images/image4.jpg', title: 'Mika', text: 'Mika je predivna maca koja voli da se mazi.' },
     { src: 'images/image5.jpg', title: 'Bubi', text: 'Bubi je miran pas koji voli spavati i biti voljen.' },
     { src: 'images/image6.jpg', title: 'Maza', text: 'Maza je draga kuca koja čeka ljubavnu porodicu.' },
@@ -79,22 +79,22 @@ const fields = [
         label: 'Vaše ime:',
         id: 'name',
         type: 'text',
-        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',  // Ispravljeno za karaktere sa dijakritikom
-        errorMessage: 'Ime sme sadržati samo slova i razmake.'
+        pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',  
+        errorMessage: 'Ime mora početi velikim slovom i imati najmanje 2 mala slova.'
     },
     {
         label: 'Vaše prezime:',
         id: 'surname',
         type: 'text',
         pattern: '^[A-Za-zČĆĐŠŽčćđšž\\s]+$',
-        errorMessage: 'Prezime sme sadržati samo slova i razmake.'
+        errorMessage: 'Prezime mora početi velikim slovom i imati najmanje 5 malih slova.'
     },
     {
         label: 'Vaša email adresa:',
         id: 'email',
         type: 'email',
-        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',  // Ispravljeno da funkcioniše u HTML-u
-        errorMessage: 'Unesite validnu email adresu (primer: korisnik@email.com).'
+        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$',  
+        errorMessage: 'Unesite validnu email adresu koja mora da sadrži "@" (primer: korisnik@email.com).'
     },
     {
         label: 'Zakazite dan i vreme kada biste došli da upoznate potencijalnog ljubimca:',

@@ -7,9 +7,9 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    align-items: center; /* Vertikalno poravnanje logoa i togglera */
-    justify-content: space-between; /* Rasporedi logo i toggler na krajeve */
-    padding: 0.5rem 1rem; /* Prilagodi padding navigacije */
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0.5rem 1rem;
 }
 
 #logo {
@@ -111,7 +111,7 @@ footer {
     transform: translateX(-50%);
     color: white;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.6); /* Tamnija poluprovidna pozadina */
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 10px;
     text-align: center;
     z-index: 2;
@@ -139,21 +139,21 @@ footer {
     }
 /*Style Udruzenje*/
 #O-udruzenju {
-    background-color: #e9f7e7; /* Svetlo zelena pozadina za FAQ sekciju */
-    border: 2px solid #28a745; /* Tamno zelena border oko FAQ kontejnera */
+    background-color: #e9f7e7;
+    border: 2px solid #28a745;
     border-radius: 30px;
 }
 
 /*Style za FAQ*/
 #FFaq-naslov {
-    background-color: #388e3c; /* Tamno zelena boja za pitanje */
+    background-color: #388e3c;
 }
 
 #faq-container {
-    border: 2px solid #28a745; /* Tamno zelena border oko FAQ kontejnera */
+    border: 2px solid #28a745;
     padding: 20px;
     border-radius: 30px;
-    background-color: #e9f7e7; /* Svetlo zelena pozadina za FAQ sekciju */
+    background-color: #e9f7e7; 
 }
 
 .faq-item {
@@ -171,16 +171,16 @@ footer {
 .faq-question {
     font-size: 16px;
     font-weight: bold;
-    color: #388e3c; /* Tamno zelena boja za pitanje */
-    cursor: pointer; /* Cursor kao ruka na klikabilnom pitanju */
+    color: #388e3c;
+    cursor: pointer; 
 }
 
 .faq-answer {
-    border-top: 4px solid #c8e6c9; /* Svetlo zelena border između odgovora i pitanja */
+    border-top: 4px solid #c8e6c9;
     padding-left: 25px;
     padding-top: 20px;
     font-size: 15px;
-    display: none; /* Po defaultu odgovor je skriven */
+    display: none; 
 }
 /*Udruzenje*/
 #O-nama {
@@ -215,11 +215,11 @@ footer {
 }
 
 .main-content {
-    min-height: 80vh; /* Osigurava da main zauzima minimalnu visinu 80% ekrana */
-    padding-bottom: 20px; /* Prostor između sadržaja i footera */
+    min-height: 80vh;
+    padding-bottom: 20px;
 }
 
-/* Opcionalno: Stil za gallery-container */
+/* Stil za gallery-container */
 .gallery-container {
     background-color: #e9f7e7;
     border: 2px solid #28a745;
@@ -255,7 +255,7 @@ footer {
 .gallery-img {
     width: auto;
     height: 300px;
-    object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
+    object-fit: cover;
 }
 
 /*Stilizacija za info container*/
@@ -304,11 +304,10 @@ input, select, .radio-group, .checkbox-group {
 .radio-group, .checkbox-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Razmak između radio buttona, checkbox-a i labela */
+    gap: 10px;
     margin-top: 5px;
 }
 
-    /* Poravnavanje radio button-a i checkbox-a sa svojim labelama */
     .radio-group input[type="radio"], .checkbox-group input[type="checkbox"] {
         margin-right: 10px;
     }
@@ -351,93 +350,86 @@ input.error, input.success, select.error, select.success {
 
     .radio-checkbox-group input,
     .radio-checkbox-group label {
-        margin-right: 10px; /* Razmak između radio dugmadi/checkbox i labela */
+        margin-right: 10px;
     }
 /* Responsive stilovi */
 
 /* Mobilni uređaji (do 600px) */
 @media (max-width: 600px) {
-    /* Slajder: zadrži tekst na slajderu i smanjiti veličinu */
     #myCarousel {
-        height: 50vh; /* Visina slajdera - ekvivalent 50vh */
+        height: 50vh; 
     }
     .carousel-caption {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.6); /* Tamnija poluprovidna pozadina */
+        background-color: rgba(0, 0, 0, 0.6); 
         border-radius: 10px;
         color: #fff;
-        font-size: 0.5rem; /* Manja veličina fonta */
+        font-size: 0.5rem; 
         text-align: center;
         margin-left: auto;
-        margin-right: auto; /* Centriranje teksta */
-        padding: 15px; /* Povećan padding za bolji razmak */
+        margin-right: auto; 
+        padding: 15px;
         width:50%;
     }
 
         .carousel-caption h5 {
-            font-size: 0.8rem; /* Manja veličina za naslov */
+            font-size: 0.8rem; 
             font-weight: bold;
             padding:5px;
             margin-bottom: 10px;
         }
 
         .carousel-caption p {
-            font-size: 0.6rem; /* Smanjen font za opis */
+            font-size: 0.6rem; 
             padding: 5px;
-            margin-bottom: 15px; /* Razmak između opisa i dugmeta */
+            margin-bottom: 15px; 
         }
 
         .carousel-caption a.btn {
             font-size: 1rem;
-            padding: 8px 15px; /* Uvećana veličina dugmeta */
-            background-color: #007bff; /* Plava boja dugmeta */
+            padding: 8px 15px;
+            background-color: #007bff; 
             color: #fff;
             border-radius: 5px;
         }
 
             .carousel-caption a.btn:hover {
-                background-color: #0056b3; /* Tamnija plava za hover */
+                background-color: #0056b3; 
             }
 
 
-
-    /* Prilagoditi navbar: ikone i linkovi */
     .navbar {
-        flex-direction: column; /* Postavljanje navbar stavki u kolonu */
+        flex-direction: column; 
         align-items: flex-start;
     }
 
     .navbar-links {
-        display: none; /* Skriva linkove za manji ekran */
+        display: none;
     }
 
     .navbar-logo img {
-        width: 40px; /* Smanjena veličina loga */
+        width: 40px; 
     }
 
-    /* Footer: raspored elemenata u kolonu */
     footer .container {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    /* Galerija: Slike fit-cover */
     .gallery-img {
-        width: 100%; /* Slike se prilagođavaju širini ekrana */
+        width: 100%; 
         height: 200px;
         object-fit: cover;
     }
 
-    /* Forme: Veliki razmak između elemenata */
     #form-container {
-        padding: 1rem; /* Manje paddinga */
+        padding: 1rem; 
     }
 
     .form-group {
-        width: 100%; /* Potpuno širina input polja */
+        width: 100%;
     }
 
-    /* Dodavanje paddinga i smanjenje veličine dugmadi */
     .button-forma {
         padding: 8px 16px;
         font-size: 0.9rem;
@@ -446,34 +438,33 @@ input.error, input.success, select.error, select.success {
 
 /* Tableti (do 775px) */
 @media (max-width: 775px) {
-    /* Slajder: malo veća visina nego na mobilnim uređajima */
     #myCarousel {
         height: 25rem;
     }
 
     .carousel-caption {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.6); /* Tamnija poluprovidna pozadina */
+        background-color: rgba(0, 0, 0, 0.6); 
         border-radius: 10px;
         color: #fff;
-        font-size: 0.5rem; /* Manja veličina fonta */
+        font-size: 0.5rem; 
         text-align: center;
         margin-left: auto;
-        margin-right: auto; /* Centriranje teksta */
+        margin-right: auto; 
         width: 75%;
     }
 
         .carousel-caption h5 {
-            font-size: 1.8rem; /* Manja veličina za naslov */
+            font-size: 1.8rem; 
             font-weight: bold;
             padding: 5px;
             margin-bottom: 15px;
         }
 
         .carousel-caption p {
-            font-size: 1.6rem; /* Smanjen font za opis */
+            font-size: 1.6rem;
             padding: 5px;
-            margin-bottom: 20px; /* Razmak između opisa i dugmeta */
+            margin-bottom: 20px; 
         }
 
         .carousel-caption a.btn {
@@ -483,7 +474,7 @@ input.error, input.success, select.error, select.success {
         }
 
     .navbar {
-        flex-direction: column; /* Postaviti navbar u kolonu */
+        flex-direction: column; 
         align-items: flex-start;
     }
 
@@ -492,14 +483,12 @@ input.error, input.success, select.error, select.success {
         gap: 10px;
     }
 
-    /* Galerija: Prilagoditi slike za tablet */
     .gallery-img {
         width: 100%;
         height: 250px;
         object-fit: cover;
     }
 
-    /* Footer: Prilagoditi raspored */
     footer .container {
         flex-direction: column;
         align-items: flex-start;
@@ -508,34 +497,33 @@ input.error, input.success, select.error, select.success {
 
 /* Laptopi (do 1024px) */
 @media (max-width: 1024px) {
-    /* Slajder: Vratiti na veću visinu */
     #myCarousel {
         height: 30rem;
     }
 
     .carousel-caption {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.6); /* Tamnija poluprovidna pozadina */
+        background-color: rgba(0, 0, 0, 0.6); 
         border-radius: 10px;
         color: #fff;
-        font-size: 0.5rem; /* Manja veličina fonta */
+        font-size: 0.5rem; 
         text-align: center;
         margin-left: auto;
-        margin-right: auto; /* Centriranje teksta */
+        margin-right: auto; 
         width: 75%;
     }
 
         .carousel-caption h5 {
-            font-size: 1.6rem; /* Manja veličina za naslov */
+            font-size: 1.6rem; 
             font-weight: bold;
             padding: 5px;
             margin-bottom: 15px;
         }
 
         .carousel-caption p {
-            font-size: 1.4rem; /* Smanjen font za opis */
+            font-size: 1.4rem;
             padding: 5px;
-            margin-bottom: 20px; /* Razmak između opisa i dugmeta */
+            margin-bottom: 20px;
         }
 
         .carousel-caption a.btn {
@@ -545,8 +533,8 @@ input.error, input.success, select.error, select.success {
         }
 
     .navbar {
-        flex-direction: row; /* Postaviti navbar stavke u red */
-        justify-content: space-between; /* Rasporediti logo i linkove */
+        flex-direction: row; 
+        justify-content: space-between;
     }
 
     .navbar-links {
@@ -554,14 +542,12 @@ input.error, input.success, select.error, select.success {
         gap: 15px;
     }
 
-    /* Galerija: Slike prilagođene */
     .gallery-img {
         width: 100%;
         height: 300px;
         object-fit: cover;
     }
 
-    /* Footer: Prilagoditi raspored za laptop */
     footer .container {
         flex-direction: row;
         justify-content: space-between;

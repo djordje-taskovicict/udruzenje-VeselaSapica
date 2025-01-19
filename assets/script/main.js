@@ -23,8 +23,8 @@ let dugmad = [
 ];
 
 let Opisi = [
-    "Klikom na dugme mozete saznati vise o nasem udruzenju.",
-    "Klikom na dugme mozete pogledati i zakazati upoznavanje sa zivotinjama."
+    "Klikom na dugme možete saznati više o našem udruženju.",
+    "Klikom na dugme možete pogledati i zakazati upoznavanje sa životinjama."
 ];
 
 let carouselInner = document.getElementById("carouselItems");
@@ -37,10 +37,10 @@ for (let i = 0; i < Slike.length; i++) {
         div.classList.add("active");
     }
 
-    // Postavljanje slike kao pozadine
+    // Postavljam sliku kao pozadinu
     div.style.backgroundImage = `url(${Slike[i]})`;
-    div.style.backgroundSize = 'cover'; // Slika popunjava prostor
-    div.style.backgroundPosition = 'center'; // Centriranje slike
+    div.style.backgroundSize = 'cover'; 
+    div.style.backgroundPosition = 'center';
 
     let caption = document.createElement("div");
     caption.classList.add("carousel-caption");
@@ -52,20 +52,17 @@ for (let i = 0; i < Slike.length; i++) {
     let p = document.createElement("p");
     p.textContent = Opisi[i];
 
-    // Dugme ispod teksta
     let button = document.createElement("a");
     button.classList.add("btn", "btn-primary");
     button.href = dugmad[i];
     button.textContent = dugmetxt[i];
 
-    // Dodavanje naslova, teksta i dugmeta u caption
     caption.appendChild(h5);
     caption.appendChild(p);
     caption.appendChild(button);
 
     div.appendChild(caption);
 
-    // Dodavanje novog itema u carousel
     carouselInner.appendChild(div);
 }
 

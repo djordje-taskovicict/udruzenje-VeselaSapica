@@ -16,7 +16,7 @@
     const para2 = document.createElement('p');
     const link = document.createElement('a');
     link.href = '/';
-    link.textContent = 'početnu stranicu';
+    link.textContent = 'Vrati se na početnu stranicu.';
     para2.appendChild(link);
     thankYouContainer.appendChild(para2);
 

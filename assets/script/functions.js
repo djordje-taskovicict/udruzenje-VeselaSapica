@@ -1,6 +1,6 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     //Nav
-    let navItems = ["Pocetna", "Udruzenje", "Udomi", "Autor"];
+    let navItems = ["Početna", "Udruženje", "Udomi", "Autor"];
     let navLinks = ["index.html", "o-nama.html", "udomi.html", "autor.html"];
 
     let navMenu = document.getElementById("navMenu");
@@ -22,11 +22,12 @@
 
 
 //Footer
-let footerItems = ["Pocetna", "Udruzenje", "Udomi","Autor"];
-let footerLinkovi = ["index.html", "o-nama.html", "udomi.html","autor.html"];
+let footerItems = ["Početna", "Udruženje", "Udomi", "Autor"];
+let footerLinkovi = ["index.html", "o-nama.html", "udomi.html", "autor.html"];
 
 let footerLink = document.getElementById("footerLinks");
 
+let ul = document.createElement("ul");
 
 for (let i = 0; i < footerItems.length; i++) {
     let li = document.createElement("li");
@@ -36,8 +37,11 @@ for (let i = 0; i < footerItems.length; i++) {
     a.textContent = footerItems[i];
 
     li.appendChild(a);
-    footerLinks.appendChild(li);
+    ul.appendChild(li);
 }
+
+footerLink.appendChild(ul);
+
 
 let Onama = ["Vesela Šapica je udruženje posvećeno zaštiti napuštenih životinja, sigurnost i priliku za novi dom."];
 
