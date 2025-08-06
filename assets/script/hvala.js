@@ -1,34 +1,26 @@
 window.addEventListener('DOMContentLoaded', function () {
-  // 1) Prvo izračunaj dinamički prefix za relativnu putanju
-  const path = window.location.pathname;
-  console.log('Pathname:', path);
-
-  const segments = path
-    .split('/')           // razdvoji po “/”
-    .filter(Boolean);     // izbaci prazne delove
-  console.log('Segments:', segments);
-
+  // Dinamički izračunamo koliko "../" treba da popnemo do korena
+  const segments = window.location.pathname
+    .split('/')
+    .filter(Boolean);
   const depth = segments.length - 1;
-  console.log('Depth:', depth);
-
   const prefix = '../'.repeat(depth);
-  console.log('Prefix:', prefix);
 
-  // 2) Kreiraj thank-you container
+  // Kreiramo container za poruku
   const thankYouContainer = document.createElement('div');
   thankYouContainer.classList.add('thank-you-container');
 
-  // Dodaj naslov
+  // Naslov
   const heading = document.createElement('h1');
   heading.textContent = 'Hvala na vašoj prijavi!';
   thankYouContainer.appendChild(heading);
 
-  // Dodaj prvi paragraf
+  // Prvi paragraf
   const para1 = document.createElement('p');
   para1.textContent = 'Vaš formular je uspešno poslat. Bićemo u kontaktu uskoro.';
   thankYouContainer.appendChild(para1);
 
-  // Dodaj drugi paragraf sa dinamičkim linkom
+  // Drugi paragraf sa ispravnim, dinamičkim linkom
   const para2 = document.createElement('p');
   const link = document.createElement('a');
   link.href = prefix + 'index.html';
@@ -36,6 +28,6 @@ window.addEventListener('DOMContentLoaded', function () {
   para2.appendChild(link);
   thankYouContainer.appendChild(para2);
 
-  // Dodaj u body
+  // Ubacimo sve u body
   document.body.appendChild(thankYouContainer);
 });
