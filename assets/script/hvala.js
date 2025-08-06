@@ -15,7 +15,7 @@
     // Dodaj drugi paragraf sa linkom
     const para2 = document.createElement('p');
     const link = document.createElement('a');
-    link.href = '/';
+    link.href = 'https://djordje-taskovicict.github.io/udruzenje-VeselaSapica/';
     link.textContent = 'Vrati se na početnu stranicu.';
     para2.appendChild(link);
     thankYouContainer.appendChild(para2);
