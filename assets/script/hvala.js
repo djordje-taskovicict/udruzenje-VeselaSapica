@@ -4,6 +4,12 @@ window.addEventListener('DOMContentLoaded', function () {
   const depth = segments.length - 1;
   const prefix = '../'.repeat(depth);
 
+console.log('PATH:', window.location.pathname);
+console.log('SEGMENTS:', window.location.pathname.split('/').filter(Boolean));
+console.log('DEPTH:', window.location.pathname.split('/').filter(Boolean).length - 1);
+console.log('PREFIX:', '../'.repeat(window.location.pathname.split('/').filter(Boolean).length - 1));
+
+  
   const thankYouContainer = document.createElement('div');
   thankYouContainer.classList.add('thank-you-container');
 
