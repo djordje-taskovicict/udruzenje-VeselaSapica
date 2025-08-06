@@ -15,9 +15,7 @@
     // Dodaj drugi paragraf sa linkom
     const para2 = document.createElement('p');
     const link = document.createElement('a');
-     console.log('CURRENT PATH:', window.location.pathname);
-console.log('RESOLVED INDEX:', new URL('index.html', window.location.href).href);
-    link.href = '../../index.html';
+     link.href = '/';
     link.textContent = 'Vrati se na početnu stranicu.';
     para2.appendChild(link);
     thankYouContainer.appendChild(para2);
