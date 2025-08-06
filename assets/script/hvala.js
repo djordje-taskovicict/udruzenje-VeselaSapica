@@ -1,36 +1,25 @@
 window.addEventListener('DOMContentLoaded', function () {
-  // Izračunamo koliko "../" treba da popnemo do korena
-  const segments = window.location.pathname.split('/').filter(Boolean);
-  const depth = segments.length - 1;
-  const prefix = '../'.repeat(depth);
+    const thankYouContainer = document.createElement('div');
+    thankYouContainer.classList.add('thank-you-container');
 
-console.log('PATH:', window.location.pathname);
-console.log('SEGMENTS:', window.location.pathname.split('/').filter(Boolean));
-console.log('DEPTH:', window.location.pathname.split('/').filter(Boolean).length - 1);
-console.log('PREFIX:', '../'.repeat(window.location.pathname.split('/').filter(Boolean).length - 1));
+    // Dodaj naslov
+    const heading = document.createElement('h1');
+    heading.textContent = 'Hvala na vašoj prijavi!';
+    thankYouContainer.appendChild(heading);
 
-  
-  const thankYouContainer = document.createElement('div');
-  thankYouContainer.classList.add('thank-you-container');
+    // Dodaj prvi paragraf
+    const para1 = document.createElement('p');
+    para1.textContent = 'Vaš formular je uspešno poslat. Bićemo u kontaktu uskoro.';
+    thankYouContainer.appendChild(para1);
 
-  // Dodaj naslov
-  const heading = document.createElement('h1');
-  heading.textContent = 'Hvala na vašoj prijavi!';
-  thankYouContainer.appendChild(heading);
+    // Dodaj drugi paragraf sa linkom
+    const para2 = document.createElement('p');
+    const link = document.createElement('a');
+    link.href = '../../index.html';
+    link.textContent = 'Vrati se na početnu stranicu.';
+    para2.appendChild(link);
+    thankYouContainer.appendChild(para2);
 
-  // Dodaj prvi paragraf
-  const para1 = document.createElement('p');
-  para1.textContent = 'Vaš formular je uspešno poslat. Bićemo u kontaktu uskoro.';
-  thankYouContainer.appendChild(para1);
-
-  // Dodaj drugi paragraf sa dinamičkim linkom
-  const para2 = document.createElement('p');
-  const link = document.createElement('a');
-  link.href = prefix + 'index.html';
-  link.textContent = 'Vrati se na početnu stranicu.';
-  para2.appendChild(link);
-  thankYouContainer.appendChild(para2);
-
-  // Ubacimo sve u body
-  document.body.appendChild(thankYouContainer);
+    // Dodaj dinamicki sadržaj u body
+    document.body.appendChild(thankYouContainer);
 });
