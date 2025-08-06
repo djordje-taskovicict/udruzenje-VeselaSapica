@@ -1,26 +1,34 @@
 window.addEventListener('DOMContentLoaded', function () {
-  // Dinamički izračunamo koliko "../" treba da popnemo do korena
-  const segments = window.location.pathname
-    .split('/')
-    .filter(Boolean);
+  // Provera puta i izračunavanje koliko "../" treba
+  const path = window.location.pathname;
+  console.log('Pathname:', path);
+
+  const segments = path
+    .split('/')           // razdvoji po “/”
+    .filter(Boolean);     // izbaci prazne delove
+  console.log('Segments:', segments);
+
   const depth = segments.length - 1;
+  console.log('Depth:', depth);
+
   const prefix = '../'.repeat(depth);
+  console.log('Prefix:', prefix);
 
   // Kreiramo container za poruku
   const thankYouContainer = document.createElement('div');
   thankYouContainer.classList.add('thank-you-container');
 
-  // Naslov
+  // Dodaj naslov
   const heading = document.createElement('h1');
   heading.textContent = 'Hvala na vašoj prijavi!';
   thankYouContainer.appendChild(heading);
 
-  // Prvi paragraf
+  // Dodaj prvi paragraf
   const para1 = document.createElement('p');
   para1.textContent = 'Vaš formular je uspešno poslat. Bićemo u kontaktu uskoro.';
   thankYouContainer.appendChild(para1);
 
-  // Drugi paragraf sa ispravnim, dinamičkim linkom
+  // Dodaj drugi paragraf sa dinamičkim linkom
   const para2 = document.createElement('p');
   const link = document.createElement('a');
   link.href = prefix + 'index.html';
