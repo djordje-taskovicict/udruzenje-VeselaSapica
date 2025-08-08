@@ -53,7 +53,7 @@ for (let i = 0; i < Onama.length; i++) {
     if (footerOnama.children.length >= 1) {
         footerOnama.insertBefore(p, footerOnama.children[1]); // Ubacivanje pre drugog elementa
     } else {
-        footerOnama.appendChild(p); // Ako nema dovoljno elemenata, dodaj na kraj
+        footerOnama.appendChild(p); // Ako nema dovoljno elemenata, dodaje na kraj
     }
 }
 // footer contacts
