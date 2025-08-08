@@ -143,7 +143,7 @@ const createInputField = (field) => {
     input.name = field.id;
     if (field.pattern) input.pattern = field.pattern;
     if (field.id === 'appointment-date') {
-        input.min = new Date().toISOString().slice(0, 16); // Disable past dates
+        input.min = new Date().toISOString().slice(0, 16);
     }
     return input;
 };
@@ -284,7 +284,6 @@ form.addEventListener('submit', (event) => {
     });
 
     if (isValid) {
-        // Submit form data to Formspree (Using fetch API)
         fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
@@ -302,5 +301,6 @@ form.addEventListener('submit', (event) => {
             });
     }
 });
+
 
 
