@@ -1,7 +1,6 @@
 ﻿
 
 // Slajder
-// Nizovi sa podacima (slikama, tekstovima i dugmetima)
 let Slike = [
     "img/Vesela_Sapica.jpg",
     "img/Pas_u_kavezu.jpg"
@@ -37,7 +36,7 @@ for (let i = 0; i < Slike.length; i++) {
         div.classList.add("active");
     }
 
-    // Postavljam sliku kao pozadinu
+    // Postavlja sliku kao pozadinu
     div.style.backgroundImage = `url(${Slike[i]})`;
     div.style.backgroundSize = 'cover'; 
     div.style.backgroundPosition = 'center';
@@ -145,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
         answerElement.textContent = answers[i];
         answerElement.style.display = "none";
 
-        //Dodavanje u FAQ
         faqItem.appendChild(questionElement);
         faqItem.appendChild(answerElement);
 
@@ -153,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         faqContainer.appendChild(faqItem);
     }
 
-    // Dodaj funkcionalnost za otvaranje/zatvaranje odgovora na klik
+    // Dodavanje funkcionalnost za otvaranje/zatvaranje odgovora na klik
     let questionsElements = document.querySelectorAll(".faq-question");
     questionsElements.forEach(function (question) {
         question.addEventListener("click", function () {
@@ -162,4 +160,5 @@ document.addEventListener("DOMContentLoaded", function () {
             $(answer).slideToggle("fast");
         });
     });
+
 });
