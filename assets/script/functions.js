@@ -1,7 +1,7 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     //Nav
-    let navItems = ["Početna", "Udruženje", "Udomi", "Autor"];
-    let navLinks = ["index.html", "o-nama.html", "udomi.html", "autor.html"];
+    let navItems = ["Početna", "Udruženje", "Udomi", "Autor","ZIP"];
+    let navLinks = ["index.html", "o-nama.html", "udomi.html", "autor.html","udruzenje-VeselaSapica-Djordje-Taskovic.zip"];
 
     let navMenu = document.getElementById("navMenu");
 
@@ -22,8 +22,8 @@
 
 
 //Footer
-let footerItems = ["Početna", "Udruženje", "Udomi", "Autor"];
-let footerLinkovi = ["index.html", "o-nama.html", "udomi.html", "autor.html"];
+let footerItems = ["Početna", "Udruženje", "Udomi", "Autor","ZIP"];
+let footerLinkovi = ["index.html", "o-nama.html", "udomi.html", "autor.html","udruzenje-VeselaSapica-Djordje-Taskovic.zip"];
 
 let footerLink = document.getElementById("footerLinks");
 
